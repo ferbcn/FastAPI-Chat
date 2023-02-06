@@ -2,7 +2,7 @@ from fastapi import FastAPI, WebSocket
 import random
 from fastapi.responses import PlainTextResponse
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -32,8 +32,21 @@ async def index(request: Request):
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-   await websocket.accept()
-   while True:
-      data = await websocket.receive_text()
-      print(f"Message rx: {data}")
-      await websocket.send_text(f"Message text was: {data}")
+    await websocket.accept()
+
+    try:
+        # send "Connection established" message to client
+        await websocket.send_text("Connection established!")
+
+        # await for messages and send messages
+        while True:
+            msg = await websocket.receive_text()
+            if msg.lower() == "close":
+                await websocket.close()
+                break
+            else:
+                print(f'CLIENT says - {msg}')
+                await websocket.send_text(f"Your message was: {msg}")
+
+    except WebSocketDisconnect:
+        print("Client disconnected")
