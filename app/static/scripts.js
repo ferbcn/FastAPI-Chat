@@ -5,7 +5,7 @@ var startTime;
 
 ws.onmessage = function(event) {
     var rtt = new Date() - startTime;
-    message += "RTT: " + rtt;
+    message = message + "RTT: " + rtt;
     var messages = document.getElementById('messages')
     var message = document.createElement('li')
     var content = document.createTextNode(event.data)
