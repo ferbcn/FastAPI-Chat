@@ -4,11 +4,12 @@ var ws = new WebSocket("wss://art-intel.site/ws");
 var startTime;
 
 ws.onmessage = function(event) {
-    var rtt = new Date() - startTime;
+    var endTime = new Date();
+    var rtt = endTime - startTime;
     var messages = document.getElementById('messages')
     var message = document.createElement('li')
     var text = event.data;
-    text += "RTT: " + rtt;
+    text += " (RTT: " + rtt + ")";
     var content = document.createTextNode(text)
     message.appendChild(content)
     messages.appendChild(message)
