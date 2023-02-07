@@ -9,9 +9,9 @@ ws.onmessage = function(event) {
     var messages = document.getElementById('messages')
     var message = document.createElement('li')
     var text = event.data;
-    if (!isNaN(parseInt(endTime))){
+    //if (!isNaN(parseInt(endTime))){
         text += " (RTT: " + rtt + "ms)";
-    }
+    //}
     var content = document.createTextNode(text)
     message.appendChild(content)
     messages.appendChild(message)
