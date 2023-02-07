@@ -58,6 +58,6 @@ if __name__ == '__main__':
     Popen(['python3', '-m', 'https_redirect'])  # Add this
     uvicorn.run(
         'main:app', port=443, host='0.0.0.0',
-        reload=True, reload_dirs=['html_files'],
+        reload=True,
         ssl_keyfile='~/.ssl/key.pem',
         ssl_certfile='~/.ssl/cert.pem')
