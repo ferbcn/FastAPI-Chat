@@ -16,6 +16,7 @@ app = FastAPI(title='FastAPI Templates')
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 
+import https_redirect
 
 @app.get("/")
 def read_root():
