@@ -1,7 +1,7 @@
 //var ws = new WebSocket("ws://localhost:8000/ws");
 var ws = new WebSocket("wss://art-intel.site/ws");
 
-var startTime;
+var startTime = performance.now();
 
 ws.onmessage = function(event) {
     var endTime = new Date();
