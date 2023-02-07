@@ -57,7 +57,7 @@ async def websocket_endpoint(websocket: WebSocket):
 if __name__ == '__main__':
     # start redirect process for port 80
     Popen(['python3', 'app/https_redirect.py'])
-    # run Ssl server
+    # run SSL server
     uvicorn.run(
         'main:app', port=443, host='0.0.0.0',
         reload=True,
