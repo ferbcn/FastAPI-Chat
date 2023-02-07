@@ -9,7 +9,7 @@ ws.onmessage = function(event) {
     var messages = document.getElementById('messages')
     var message = document.createElement('li')
     var text = event.data;
-    if (!isNan(rtt)){
+    if (!isNaN(rtt)){
         text += " (RTT: " + rtt + "ms)";
     }
     var content = document.createTextNode(text);
