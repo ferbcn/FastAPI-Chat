@@ -16,7 +16,8 @@ app = FastAPI(title='FastAPI Templates')
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 
-import https_redirect
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
+app.add_middleware(HTTPSRedirectMiddleware)
 
 @app.get("/")
 def read_root():
@@ -57,9 +58,6 @@ async def websocket_endpoint(websocket: WebSocket):
 
 if __name__ == '__main__':
     # start redirect process for port 80
-    Popen(['python3', '-m', 'https_redirect'])
     uvicorn.run(
         'main:app', port=443, host='0.0.0.0',
-        reload=True,
-        ssl_keyfile='~/.ssl/key.pem',
-        ssl_certfile='~/.ssl/cert.pem')
+        reload=True)
