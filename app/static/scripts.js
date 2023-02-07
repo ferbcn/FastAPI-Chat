@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:8000/ws");
+var ws = new WebSocket("ws://art-intel.site:8000/ws");
 
 ws.onmessage = function(event) {
    var messages = document.getElementById('messages')
