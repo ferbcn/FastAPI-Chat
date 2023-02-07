@@ -1,7 +1,7 @@
 //var ws = new WebSocket("ws://localhost:8000/ws");
 var ws = new WebSocket("wss://art-intel.site/ws");
 
-var startTime = performance.now();
+var startTime;
 
 ws.onmessage = function(event) {
     var endTime = new Date();
@@ -9,7 +9,9 @@ ws.onmessage = function(event) {
     var messages = document.getElementById('messages')
     var message = document.createElement('li')
     var text = event.data;
-    text += " (RTT: " + rtt + ")";
+    if !isNaN(endTime){
+        text += " (RTT: " + rtt + ")";
+    }
     var content = document.createTextNode(text)
     message.appendChild(content)
     messages.appendChild(message)
