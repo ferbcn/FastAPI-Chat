@@ -61,5 +61,6 @@ if __name__ == '__main__':
     uvicorn.run(
         'main:app', port=443, host='0.0.0.0',
         reload=True,
-        ssl_keyfile='~/.ssl/key.pem',
-        ssl_certfile='~/.ssl/cert.pem')
+        ssl_keyfile='./key.pem',
+        ssl_certfile='./cert.pem',
+    )
