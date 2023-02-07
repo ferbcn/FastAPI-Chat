@@ -1,5 +1,5 @@
 //var ws = new WebSocket("ws://localhost:8000/ws");
-var ws = new WebSocket("ws://art-intel.site/ws");
+var ws = new WebSocket("wss://art-intel.site/ws");
 
 
 ws.onmessage = function(event) {
