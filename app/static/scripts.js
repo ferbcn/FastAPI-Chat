@@ -1,7 +1,11 @@
 //var ws = new WebSocket("ws://localhost:8000/ws");
 var ws = new WebSocket("wss://art-intel.site/ws");
 
-var startTime = int(Date());
+var startTime;
+
+document.addEventListener("DOMContentLoaded", function(){
+    startTime = Date();
+});
 
 ws.onmessage = function(event) {
     var endTime = new Date();
