@@ -7,8 +7,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-import uvicorn
-
 # Create application
 app = FastAPI(title='FastAPI Templates')
 
@@ -51,12 +49,3 @@ async def websocket_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect:
         print("Client disconnected")
-
-if __name__ == 'main':
-    uvicorn.run(
-               app,
-               host="0.0.0.0",
-               port=443,
-               ssl_keyfile=".ssl/key.pem",
-               ssl_certfile=".ssl/cert.pem"
-               )
